@@ -1,0 +1,103 @@
+<GuiXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://in.imic.us/schema/esoui/101040/guixml.xsd">
+    <Controls>
+        <Control name="BeanCounter_Item" virtual="true" alpha="1.0" resizeToFitDescendents="true">
+            <Anchor point="TOPLEFT" relativeTo="$(parent)" />
+            <ResizeToFitPadding height="4" width="4" />
+            <Controls>
+                <Button
+                    name="$(parent)AbilitySlot"
+                    inherits="ZO_Skills_AbilitySlot"
+                    inheritScale="true"
+                    inheritAlpha="true"
+                >
+                    <Dimensions x="32" y="32" />
+                    <Anchor point="TOPLEFT" relativeTo="$(parent)" offsetY="0" offsetX="0" />
+                    <OnMouseEnter>
+                        BeanCounter_ItemAbilitySlot_OnMouseEnter(self)
+                    </OnMouseEnter>
+                    <OnMouseExit>
+                        BeanCounter_ItemAbilitySlot_OnMouseExit(self)
+                    </OnMouseExit>
+                </Button>
+                <Label
+                    name="$(parent)Count"
+                    font="$(CHAT_FONT)|$(KB_16)|soft-shadow-thin"
+                    inheritScale="true"
+                    inheritAlpha="true"
+                    horizontalAlignment="CENTER"
+                    verticalAlignment="CENTER"
+                    color="INTERFACE_COLOR_TYPE_TEXT_COLORS:INTERFACE_TEXT_COLOR_NORMAL"
+                    text="—"
+                >
+                    <Dimensions x="96" y="32" />
+                    <Anchor point="TOPLEFT" relativeTo="$(parent)" offsetX="32" offsetY="0" />
+                </Label>
+            </Controls>
+        </Control>
+        <TopLevelControl name="BeanCounter_StatsTooltipTopLevel" inherits="TooltipTopLevel">
+            <Controls>
+                <Tooltip name="BeanCounter_StatsTooltip" inherits="ZO_BaseTooltip">
+                    <ResizeToFitPadding width="32" height="40" />
+                    <DimensionConstraints minX="384" maxX="384" />
+                </Tooltip>
+            </Controls>
+        </TopLevelControl>
+        <TopLevelControl
+            name="BeanCounter_Display"
+            movable="true"
+            mouseEnabled="true"
+            hidden="false"
+            clampedToScreen="true"
+            resizeToFitDescendents="true"
+        >
+            <OnInitialized>
+                BeanCounter_Initialized(self)
+            </OnInitialized>
+            <OnMoveStop>
+                BeanCounter_OnMoveStop(self)
+            </OnMoveStop>
+            <OnMouseEnter>
+                if self.locked then return end
+                WINDOW_MANAGER:SetMouseCursor(MOUSE_CURSOR_PAN)
+            </OnMouseEnter>
+            <OnMouseExit>
+                if self.locked then return end
+                WINDOW_MANAGER:SetMouseCursor(MOUSE_CURSOR_DO_NOT_CARE)
+            </OnMouseExit>
+            <DimensionConstraints minX="100" minY="64" />
+            <ResizeToFitPadding height="16" width="16" />
+            <Anchor point="CENTER" relativeTo="GuiRoot" />
+            <Controls>
+                <Backdrop name="$(parent)Backdrop"
+                    inherits="ZO_MinorMungeBackdrop_SemiTransparentBlack"
+                    excludeFromResizeToFitExtents="true" />
+                <Control name="$(parent)List" resizeToFitDescendents="true">
+                    <Anchor point="CENTER" relativeTo="$(parent)" relativePoint="CENTER" />
+                    <Controls>
+                        <Control name="$(parent)Item1" inherits="BeanCounter_Item">
+                            <Anchor point="TOPLEFT" relativeTo="$(parent)" relativePoint="TOPLEFT"
+                                offsetY="0" />
+                        </Control>
+                        <Control name="$(parent)Item2" inherits="BeanCounter_Item">
+                            <Anchor point="TOPLEFT" relativeTo="$(parent)Item1"
+                                relativePoint="BOTTOMLEFT" offsetY="0" />
+                        </Control>
+                        <Control name="$(parent)Item3" inherits="BeanCounter_Item">
+                            <Anchor point="TOPLEFT" relativeTo="$(parent)Item2"
+                                relativePoint="BOTTOMLEFT" offsetY="0" />
+                        </Control>
+                        <Control name="$(parent)Item4" inherits="BeanCounter_Item">
+                            <Anchor point="TOPLEFT" relativeTo="$(parent)Item3"
+                                relativePoint="BOTTOMLEFT" offsetY="0" />
+                        </Control>
+                        <Control name="$(parent)Item5" inherits="BeanCounter_Item">
+                            <Anchor point="TOPLEFT" relativeTo="$(parent)Item4"
+                                relativePoint="BOTTOMLEFT" offsetY="0" />
+                        </Control>
+                    </Controls>
+                </Control>
+            </Controls>
+        </TopLevelControl>
+    </Controls>
+</GuiXml>

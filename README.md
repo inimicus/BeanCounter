@@ -1,0 +1,2 @@
+# BeanCounter
+Count your beans.

@@ -1,0 +1,22 @@
+## Title: Bean Counter
+## APIVersion: 101039
+## SavedVariables: BeanCounterData
+## Description: Count your beans.
+## Version: 1.0.0
+## AddOnVersion: 10000
+## Author: |cFFCCCC@g4rr3t|r (NA)
+## DependsOn: LibAddonMenu-2.0>=28
+
+## This Add-on is not created by, affiliated with or sponsored by ZeniMax Media
+## Inc. or its affiliates. The Elder Scrolls® and related logos are registered
+## trademarks or trademarks of ZeniMax Media Inc. in the United States and/or
+## other countries. All rights reserved.
+
+src/Init.lua
+
+src/BeanCounter.lua
+src/BeanCounter.xml
+
+src/Settings.lua
+src/Overrides.lua
+src/Tracking.lua
